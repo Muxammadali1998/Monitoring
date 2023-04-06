@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WorkerController;
+use App\Http\Controllers\QrCodeController;
+use App\Http\Controllers\EventController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,5 +28,7 @@ Route::middleware('auth:api')->group(function(){
     Route::get('/user/{id}',[UserController::class, 'show']);
     Route::put('/user',[UserController::class, 'update']);
     Route::ApiResource('/worker', WorkerController::class);
+    Route::post('/qrcode/{id}',[QrCodeController::class, 'qrcode']);
+    Route::post('/event/{id}',[EventController::class, 'event']);
 
 });
