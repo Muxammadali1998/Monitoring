@@ -11,6 +11,12 @@ class Worker extends Model
     protected $fillable = [
         'name',
         'job',
-        'status'
+        'phone'
     ];
+
+
+    public function events()
+    {
+        return $this->hasMany(Event::class);
+    }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\WorkerController;
 use App\Http\Controllers\QrCodeController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,5 +31,11 @@ Route::middleware('auth:api')->group(function(){
     Route::ApiResource('/worker', WorkerController::class);
     Route::post('/qrcode/{id}',[QrCodeController::class, 'qrcode']);
     Route::post('/event/{id}',[EventController::class, 'event']);
+    //Filter
+    Route::get('/search/{key}',[SearchController::class, 'search']);
+    Route::get('/daily/{day}',[SearchController::class, 'daily']);
+    Route::get('/weekly',[SearchController::class, 'weekly']);
+    Route::get('/monthly/{month}',[SearchController::class, 'monthly']);
+    Route::get('/yearly/{year}',[SearchController::class, 'yearly']);
 
 });

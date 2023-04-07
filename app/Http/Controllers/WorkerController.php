@@ -41,6 +41,7 @@ class WorkerController extends Controller
         $data=Validator::make($request->all(), [
             'name'=>'required', 
             'job'=>'required',
+            'phone'=>'required | unique:workers',
         ]);
         
         if($data->fails()){
@@ -58,6 +59,7 @@ class WorkerController extends Controller
      */
     public function show(Worker $worker)
     {
+        $worker = Worker::with('events')->find($worker->id);
         return $this->success($worker,'',200);
     }
 
@@ -84,8 +86,11 @@ class WorkerController extends Controller
         $data=Validator::make($request->all(), [
             'name'=>'required', 
             'job'=>'required',
+            'phone'=>'required | unique:workers,phone,'.$worker->id,
         ]);
-
+       if($data->fails()){
+            return $this->error("", 400, $data->errors());
+        }
         $worker->update($request->all());
         return $this->success('','update',200);
     }
