@@ -16,6 +16,7 @@
             <div class="card-header">
                 <h2>Simple QR Code</h2>
             </div>
+            <a href="/api/qr/1"><h1>Save image</h1></a>
             <div class="card-body">
                 {!! QrCode::size(300)->generate('ok') !!}
             </div>

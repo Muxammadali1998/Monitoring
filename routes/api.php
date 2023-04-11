@@ -37,5 +37,6 @@ Route::middleware('auth:api')->group(function(){
     Route::get('/weekly',[SearchController::class, 'weekly']);
     Route::get('/monthly/{month}',[SearchController::class, 'monthly']);
     Route::get('/yearly/{year}',[SearchController::class, 'yearly']);
+    Route::get('/qr/{id}',[QrCodeController::class, 'qr']);
 
 });
