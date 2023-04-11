@@ -17,7 +17,6 @@ class QrCodeController extends Controller
     {
 
 
-
         $worker = Worker::find($id);
         $shablon = Image::make('./images/shablon.jpg');
          \QrCode::size(300)->format('png')->generate($id, public_path('images/qrcode.png'));
@@ -43,7 +42,7 @@ class QrCodeController extends Controller
             $font->align('center');
             $font->valign('top');
         });
-        $shablon->text( auth()->name(), 180 , 60, function($font){
+        $shablon->text(auth()->guard('api')->user()->name, 180 , 60, function($font){
             $font->file('font.ttf');
             $font->size(30);
             $font->color('#fff');
