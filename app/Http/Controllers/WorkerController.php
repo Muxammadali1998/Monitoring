@@ -59,7 +59,9 @@ class WorkerController extends Controller
      */
     public function show(Worker $worker)
     {
+        \QrCode::size(300)->format('png')->generate($worker->id, public_path('images/workerqr.png'));
         $worker = Worker::with('events')->find($worker->id);
+        $worker->image = 'images/workerqr.png';
         return $this->success($worker,'',200);
     }
 

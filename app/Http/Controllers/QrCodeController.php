@@ -22,28 +22,28 @@ class QrCodeController extends Controller
          \QrCode::size(300)->format('png')->generate($id, public_path('images/qrcode.png'));
         $qr = Image::make("./images/qrcode.png");
         $shablon->text($worker->name, 350 , 530, function($font){
-            $font->file('font.ttf');
+            $font->file(public_path('font.ttf'));
             $font->size(36);
             $font->color('#000000');
             $font->align('center');
             $font->valign('top');
         });
         $shablon->text($worker->job, 350 , 580, function($font){
-            $font->file('font.ttf');
+            $font->file(public_path('font.ttf'));
             $font->size(25);
             $font->color('#000000');
             $font->align('center');
             $font->valign('top');
         });
         $shablon->text( "Phone  ".$worker->phone, 350 , 700, function($font){
-            $font->file('font.ttf');
+            $font->file(public_path('font.ttf'));
             $font->size(25);
             $font->color('#000000');
             $font->align('center');
             $font->valign('top');
         });
         $shablon->text(auth()->guard('api')->user()->name, 180 , 60, function($font){
-            $font->file('font.ttf');
+            $font->file(public_path('font.ttf'));
             $font->size(30);
             $font->color('#fff');
             $font->align('center');
